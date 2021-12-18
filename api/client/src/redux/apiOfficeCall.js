@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { addOfficeFail, addOfficeStart, addOfficeSuccess, deleteOfficeFail, deleteOfficeStart, deleteOfficeSuccess, getOfficeFail, getOfficeStart, getOfficeSuccess } from "./officeRedux"
+import { addOfficeFail, addOfficeStart, addOfficeSuccess, deleteOfficeFail, deleteOfficeSuccess, getOfficeFail, getOfficeStart, getOfficeSuccess } from "./officeRedux"
 
 export const getOfficeByCompany = async (company, dispatch) => {
     dispatch(getOfficeStart());
@@ -18,6 +18,7 @@ export const addNewOffice = async (toast, office, dispatch) => {
         const res = await axios.post('/office', office)
         dispatch(addOfficeSuccess(res.data))
         toast({
+            position: 'top',
             title: `Success created ${office.name} office of ${office.company}`,
             status: 'success',
             isClosable: true,
@@ -25,6 +26,7 @@ export const addNewOffice = async (toast, office, dispatch) => {
     } catch (err) {
         dispatch(addOfficeFail())
         toast({
+            position: 'top',
             title: `Please input all field`,
             status: 'error',
             isClosable: true,
@@ -32,11 +34,16 @@ export const addNewOffice = async (toast, office, dispatch) => {
     }
 }
 
-export const deleteOffice = async (id, dispatch) => {
-    dispatch(deleteOfficeStart());
+export const deleteOffice = async (toast, id, dispatch) => {
     try {
         await axios.delete(`/office/${id}`)
         dispatch(deleteOfficeSuccess(id))
+        toast({
+            position: 'top',
+            title: `Office has been deleted`,
+            status: 'info',
+            isClosable: true,
+        });
     } catch (err) {
         dispatch(deleteOfficeFail())
     }

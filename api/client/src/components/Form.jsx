@@ -48,6 +48,7 @@ export default function FormC({ isOffice }) {
   const toast = useToast();
   const dispatch = useDispatch();
   const company = useSelector((state) => state.company);
+  const office = useSelector((state) => state.office);
 
   // handle on input change
   const handleInput = (e) => {
@@ -79,6 +80,7 @@ export default function FormC({ isOffice }) {
       setInNumberPhone('');
     } else {
       toast({
+        position: 'top',
         title: `Please fill in all input`,
         status: 'error',
         isClosable: true,
@@ -198,6 +200,7 @@ export default function FormC({ isOffice }) {
           width="100%"
           mt={4}
           type="submit"
+          isLoading={company.loading || office.loading}
           onClick={isOffice ? handleCreateOffice : handleCreateCompany}
         >
           Create

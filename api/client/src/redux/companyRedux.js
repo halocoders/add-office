@@ -45,9 +45,6 @@ const companySlice = createSlice({
       state.loading = false;
       state.error = true;
     },
-    deleteCompanyStart: (state) => {
-      state.loading = true;
-    },
     deleteCompanySuccess: (state, { payload }) => {
       state.loading = false;
       state.companies = state.companies.filter((item) => item._id !== payload)
@@ -69,7 +66,6 @@ export const {
   addCompanyStart,
   addCompanySuccess,
   addCompanyFail,
-  deleteCompanyStart,
   deleteCompanySuccess,
   deleteCompanyFail,
 } = companySlice.actions;

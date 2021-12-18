@@ -1,17 +1,20 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Heading, Flex, Stack, Grid, Text } from '@chakra-ui/react';
 import Form from '../components/Form';
 import CardItem from '../components/CardItem';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllCompany } from '../redux/apiCall';
+import { getAllCompany, getOneCompany } from '../redux/apiCall';
+import { SkeletonComponent } from '../atoms/SkeletonComponent';
 
 const Overview = () => {
   const company = useSelector((state) => state.company);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getAllCompany(dispatch);
+  useEffect(async () => {
+    await getAllCompany(dispatch);
+    await getOneCompany('', dispatch);
   }, [dispatch]);
 
   return (
@@ -23,13 +26,14 @@ const Overview = () => {
       </Flex>
       <Stack mt={10}>
         <Heading mb={5}>Companies</Heading>
-        <Grid
-          templateColumns="repeat(auto-fill, minmax(255px, 355px))"
-          gap={6}
-          gridGap={6}
-          justifyContent={['center', 'left']}
-        >
-          {company.companies?.length !== 0 ? (
+        <Grid templateColumns="repeat(auto-fill, minmax(255px, 355px))" gap={6} gridGap={6} justifyContent={['center', 'left']} >
+          {company.loading ? (
+            <>
+              <SkeletonComponent />
+              <SkeletonComponent />
+              <SkeletonComponent />
+            </>
+          ) : company.companies?.length !== 0 ? (
             company.companies?.map((item, i) => (
               <CardItem key={i} data={item} />
             ))

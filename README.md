@@ -15,6 +15,7 @@ Here, I make a mini Information Management System using ReactJS and Redux Toolki
 - Show company in Office Page and show the office under the company
 - Sort company and office item by newest added
 - Specific input requirement
+- Skeleton loading
 
 ## Development
 
@@ -37,6 +38,7 @@ To start concurrently with the server, you can run `npm start:dev` from api path
 - ChakraUI
 - NodeJS
 - Express
+- MongoDB
 
 ## Prioritization
 

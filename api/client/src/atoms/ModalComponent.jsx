@@ -1,28 +1,20 @@
 import React from 'react';
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-} from '@chakra-ui/react';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-// import { deleteAllByCompany, deleteOffice } from '../redux/officeRedux';
 import { deleteCompany } from '../redux/apiCall';
 import { deleteOffice } from '../redux/apiOfficeCall';
+import { useToast } from '@chakra-ui/react'
 
 export default function ModalComponent({ isOpen, onClose, data, isOffice }) {
   const dispatch = useDispatch();
+  const toast = useToast();
 
   const handleDeleteCompany = async () => {
-    deleteCompany(data._id, dispatch);
+    deleteCompany(toast, data._id, dispatch);
     onClose();
   };
   const handleDeleteOffice = async () => {
-    deleteOffice(data, dispatch);
+    deleteOffice(toast, data, dispatch);
     onClose();
   };
   return (

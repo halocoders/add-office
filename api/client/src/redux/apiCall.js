@@ -4,7 +4,6 @@ import {
     addCompanyStart,
     addCompanySuccess,
     deleteCompanyFail,
-    deleteCompanyStart,
     deleteCompanySuccess,
     getCompanyFail,
     getCompanyStart,
@@ -27,8 +26,13 @@ export const getAllCompany = async (dispatch) => {
 export const getOneCompany = async (company, dispatch) => {
     dispatch(getOneCompanyStart());
     try {
-        const res = await axios.get('/company/find/' + company);
-        dispatch(getOneCompanySuccess(res.data));
+        if (company !== '') {
+            const res = await axios.get('/company/find/' + company);
+            dispatch(getOneCompanySuccess(res.data));
+        } else {
+            dispatch(getOneCompanySuccess({}))
+        }
+
     } catch (err) {
         dispatch(getOneCompanyFail());
     }
@@ -40,6 +44,7 @@ export const addNewCompany = async (toast, company, dispatch) => {
         const res = await axios.post('/company', company);
         dispatch(addCompanySuccess(res.data));
         toast({
+            position: 'top',
             title: `Success created ${company.name}`,
             status: 'success',
             isClosable: true,
@@ -47,6 +52,7 @@ export const addNewCompany = async (toast, company, dispatch) => {
     } catch (err) {
         dispatch(addCompanyFail());
         toast({
+            position: 'top',
             title: `Error: ${err}`,
             status: 'error',
             isClosable: true,
@@ -54,11 +60,16 @@ export const addNewCompany = async (toast, company, dispatch) => {
     }
 };
 
-export const deleteCompany = async (id, dispatch) => {
-    dispatch(deleteCompanyStart());
+export const deleteCompany = async (toast, id, dispatch) => {
     try {
         await axios.delete(`/company/${id}`);
         dispatch(deleteCompanySuccess(id));
+        toast({
+            position: 'top',
+            title: `Company has been deleted`,
+            status: 'info',
+            isClosable: true,
+        });
     } catch (err) {
         dispatch(deleteCompanyFail());
     }
