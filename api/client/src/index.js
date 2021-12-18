@@ -16,7 +16,6 @@ const theme = extendTheme({
 });
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
-// axios.defaults.baseURL = 'http://localhost:5000/api';
 
 ReactDOM.render(
   <Provider store={store}>

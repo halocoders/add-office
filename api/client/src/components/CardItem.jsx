@@ -25,11 +25,11 @@ export default function CardItem({ isOffice, data, dataOffice }) {
       <Flex>
         {!isOffice ? (
           <>
-            <Link to={`/office/${data?.name}`}>
-              <Heading as="h4" size="lg" isTruncated mb={3}>
-                {data ? data.name : dataOffice.name}
-              </Heading>
-            </Link>
+            <Heading as="h4" size="lg" isTruncated mb={3}>
+              <Link to={`/office/${data?.name}`}>
+                {!isOffice ? data.name : dataOffice.name}
+              </Link>
+            </Heading>
             <Spacer />
             <button onClick={() => setShowModal(!showModal)}>
               <BiTrashAlt className="text-2xl hover:text-red-500 transition-all" />

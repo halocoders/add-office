@@ -1,4 +1,4 @@
-import { Heading, Stack, Box, Text, Flex, Spacer } from '@chakra-ui/react';
+import { Heading, Stack, Box, Text, Flex, Spacer, Tooltip } from '@chakra-ui/react';
 import { BiTrashAlt } from 'react-icons/bi';
 import { useState } from 'react';
 import ModalComponent from '../atoms/ModalComponent';
@@ -9,9 +9,11 @@ export default function CardOffice({ data }) {
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" padding={5}>
       <Flex>
-        <Heading as="h4" size="lg" isTruncated mb={3}>
-          {data?.name}
-        </Heading>
+        <Tooltip label={data?.name}>
+          <Heading as="h4" size="lg" isTruncated mb={3} className='cursor-default'>
+            {data?.name}
+          </Heading>
+        </Tooltip>
         <Spacer />
         <button onClick={() => setShowModal(!showModal)}>
           <BiTrashAlt className="text-2xl hover:text-red-500 transition-all" />

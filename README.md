@@ -4,6 +4,8 @@
 
 Here, I make a mini Information Management System using ReactJS and Redux Toolkit.
 
+🚦 This is the same github as before. I just remove my commit history, because I forgot to hide my mongo pass & admin before 😊
+
 ### [Demo](https://addoffice.herokuapp.com/)
 
 ## Key Features
@@ -15,7 +17,12 @@ Here, I make a mini Information Management System using ReactJS and Redux Toolki
 - Show company in Office Page and show the office under the company
 - Sort company and office item by newest added
 - Specific input requirement
+
+Mini Features (include):
+
+- Popup information for interactions
 - Skeleton loading
+- Tooltip to handle long name (office)
 
 ## Development
 
