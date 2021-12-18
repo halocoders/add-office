@@ -32,7 +32,7 @@ export default function CardItem({ isOffice, data, dataOffice }) {
             </Link>
             <Spacer />
             <button onClick={() => setShowModal(!showModal)}>
-              <BiTrashAlt className="text-2xl" />
+              <BiTrashAlt className="text-2xl hover:text-red-500 transition-all" />
             </button>
           </>
         ) : (

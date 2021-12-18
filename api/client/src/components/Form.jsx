@@ -121,6 +121,7 @@ export default function FormC({ isOffice }) {
         <FormLabel>Name:</FormLabel>
         <Input
           name="name"
+          className="capitalize"
           value={isOffice ? valOffice.name : valCompany.name}
           placeholder="Name"
           onChange={handleInput}

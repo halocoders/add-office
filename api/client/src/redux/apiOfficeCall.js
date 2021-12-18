@@ -34,6 +34,7 @@ export const addNewOffice = async (toast, office, dispatch) => {
     }
 }
 
+// DELETE OFFICE
 export const deleteOffice = async (toast, id, dispatch) => {
     try {
         await axios.delete(`/office/${id}`)
@@ -46,5 +47,19 @@ export const deleteOffice = async (toast, id, dispatch) => {
         });
     } catch (err) {
         dispatch(deleteOfficeFail())
+    }
+}
+
+// DELETE ALL OFFICE BY COMPANY
+export const deleteAllOffice = async (toast, company) => {
+    try {
+        await axios.delete(`/office/find/${company}`)
+    } catch (err) {
+        toast({
+            position: 'top',
+            title: `Error: ${err}`,
+            status: 'error',
+            isClosable: true,
+        });
     }
 }

@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Heading, Flex, Stack, Grid, Text } from '@chakra-ui/react';
 import Form from '../components/Form';
 import CardItem from '../components/CardItem';
