@@ -1,0 +1,21 @@
+.react-datepicker-wrapper .react-datepicker__input-container input {
+  width: 100%;
+  color: white;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.247);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* phone input number */
+.css-k008qs .PhoneInput {
+  width: 100%;
+}
+
+.css-k008qs .PhoneInput input {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.247);
+  background: transparent;
+}
