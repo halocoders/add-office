@@ -38,7 +38,6 @@ router.get('/find/:name', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         let companies = await Company.find().sort({ createdAt: -1 });
-
         res.status(200).json(companies);
     } catch (err) {
         res.status(500).json(err);

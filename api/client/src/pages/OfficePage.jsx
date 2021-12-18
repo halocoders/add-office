@@ -6,6 +6,7 @@ import CardItem from '../components/CardItem';
 import CardOffice from '../components/CardOffice';
 import { getOfficeByCompany } from '../redux/apiOfficeCall';
 import { getOneCompany } from '../redux/apiCall';
+import { SkeletonComponent } from '../atoms/SkeletonComponent';
 
 const OfficePage = () => {
   const location = useLocation();
@@ -24,13 +25,10 @@ const OfficePage = () => {
     <section id="office-page" className="mt-11">
       <Heading mb={5}>Office Page</Heading>
       {companies && <CardItem isOffice dataOffice={companies} />}
-      <Grid
-        templateColumns="repeat(auto-fill, minmax(255px, 345px))"
-        gridGap={6}
-        mt={6}
-        justifyContent={['center', 'left']}
-      >
-        {office.offices.length !== 0 ? (
+      <Grid templateColumns="repeat(auto-fill, minmax(255px, 345px))" gridGap={6} mt={6} justifyContent={['center', 'left']} >
+        {office.loading ? (
+          <SkeletonComponent />
+        ) : office.offices.length !== 0 ? (
           office.offices.map((item, i) => <CardOffice data={item} key={i} />)
         ) : (
           <Text as="h2">There is no offices created yet</Text>

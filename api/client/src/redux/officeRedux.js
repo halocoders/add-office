@@ -30,9 +30,6 @@ const officeSlice = createSlice({
       state.loading = false;
       state.error = true;
     },
-    deleteOfficeStart: (state) => {
-      state.loading = true;
-    },
     deleteOfficeSuccess: (state, { payload }) => {
       state.loading = false;
       state.offices = state.offices.filter((item) => item._id !== payload)
@@ -50,7 +47,6 @@ export const { getOfficeStart,
   addOfficeStart,
   addOfficeSuccess,
   addOfficeFail,
-  deleteOfficeStart,
   deleteOfficeSuccess,
   deleteOfficeFail, } =
   officeSlice.actions;

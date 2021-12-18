@@ -14,7 +14,7 @@ export default function CardOffice({ data }) {
         </Heading>
         <Spacer />
         <button onClick={() => setShowModal(!showModal)}>
-          <BiTrashAlt className="text-2xl" />
+          <BiTrashAlt className="text-2xl hover:text-red-500 transition-all" />
         </button>
         <ModalComponent
           isOpen={showModal}

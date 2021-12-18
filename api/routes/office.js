@@ -1,7 +1,6 @@
 const Office = require('../models/Office')
 const router = require('express').Router()
 
-
 // CREATE
 router.post('/', async (req, res) => {
     const newOffice = new Office(req.body);
@@ -39,6 +38,16 @@ router.get('/', async (req, res) => {
         }
 
         res.status(200).json(offices);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// DELETE ALL OFFICE BY COMPANY
+router.delete('/find/:company', async (req, res) => {
+    try {
+        await Office.findOneAndDelete({ company: req.params.company });
+        res.status(200).json("All office has been deleted...");
     } catch (err) {
         res.status(500).json(err);
     }
